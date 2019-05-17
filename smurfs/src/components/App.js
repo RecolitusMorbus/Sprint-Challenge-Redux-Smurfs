@@ -30,7 +30,7 @@ class App extends Component {
           {this.props.fetchingSmurfs ? (
             <p>Protectees Inbound for Processing</p>
           ) : (
-            <SmurfRoster smurfs = {this.props.smurfs} />
+            <SmurfRoster smurfs={this.props.smurfs} />
           )}
         </div>
         <div>
