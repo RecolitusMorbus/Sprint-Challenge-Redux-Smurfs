@@ -9,6 +9,7 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import { fetchSmurfs, addSmurf } from '../actions';
+import SmurfRoster from './SmurfRoster';
 
 class App extends Component {
   componentDidMount() {
@@ -21,14 +22,28 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+      <div>
+        <h1>Smurf Security Village 292 Roster</h1>
+        <h6>Your Protection, Ensured</h6>
+        <div>
+          {this.props.fetchingSmurfs ? (
+            <p>Protectees Inbound for Processing</p>
+          ) : (
+            <SmurfRoster smurfs = {this.props.smurfs} />
+          )}
+        </div>
+        <div>
+          <span>Process New Protectee to Smurf Security Village 292?</span>
+          <br/>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = props => ({
+  smurfs: props.smurfs,
+  fetchingSmurfs: props.fetchingSmurfs
+});
+
+export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App);
