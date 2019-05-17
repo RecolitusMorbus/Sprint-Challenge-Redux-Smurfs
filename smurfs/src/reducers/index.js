@@ -46,7 +46,7 @@ const reducers = (state = iniSmurf, action) => {
         ...state,
         fetchingSmurfs: false,
         smurfs: [
-          ...action.payload
+          ...action.payload,
         ]
       };
     case FETCH_FAILURE:
@@ -65,7 +65,11 @@ const reducers = (state = iniSmurf, action) => {
         ...state,
         addingSmurf: false,
         smurfs: [
-          ...action.payload
+          { smurf: [
+            { name: action.payload },
+            { age: action.payload },
+            { height: `${action.payload}cm` }
+          ]}
         ]
       };
     case ADD_FAILURE:

@@ -10,6 +10,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetchSmurfs, addSmurf } from '../actions';
 import SmurfRoster from './SmurfRoster';
+import ProcessSmurf from './ProcessSmurf';
 
 class App extends Component {
   componentDidMount() {
@@ -35,15 +36,16 @@ class App extends Component {
         <div>
           <span>Process New Protectee to Smurf Security Village 292?</span>
           <br/>
+            <ProcessSmurf addSmurf={this.props.addSmurf} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = props => ({
-  smurfs: props.smurfs,
-  fetchingSmurfs: props.fetchingSmurfs
+const mapStateToProps = state => ({
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs
 });
 
 export default connect(mapStateToProps, { fetchSmurfs, addSmurf })(App);
